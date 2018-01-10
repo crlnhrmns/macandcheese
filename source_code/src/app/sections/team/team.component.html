@@ -1,0 +1,74 @@
+<div class="section section-dark cd-section" id="team">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center">
+        <h2 class="title">Wie is er nu Cheesy?</h2>
+        <h5 class="description"></h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6" *ngFor="let team_member of team_members">
+        <div class="card card-profile card-plain">
+          <div class="col-md-5">
+            <div class="card-image">
+              <a href="">
+                <img class="img" src={{team_member.img_path}}/>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="card-content">
+              <h4 class="card-title">{{team_member.name}}</h4>
+              <h6 class="category text-muted">{{team_member.role}}</h6>
+
+              <p class="card-description">
+                {{team_member.description}}
+              </p>
+
+              <div class="footer">
+                <a *ngIf="team_member.facebook_path.length > 0" href={{team_member.facebook_path}} target="_blank" class="btn btn-just-icon btn-simple btn-white"><i class="fa fa-facebook-square"></i></a>
+                <a *ngIf="team_member.instagram_path.length > 0" href={{team_member.instagram_path}} target="_blank" class="btn btn-just-icon btn-simple btn-white"><i class="fa fa-instagram"></i></a>
+                <a *ngIf="team_member.twitter_path.length > 0" href={{team_member.twitter_path}} target="_blank" class="btn btn-just-icon btn-simple btn-white"><i class="fa fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <!-- Carousel Card -->
+        <div class="card card-raised">
+          <div id="carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel slide" data-ride="carousel">
+
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li *ngFor="let image of team_images; let idx=index; let is_first=first;" class="{{is_first ? 'active' : ''}}" data-target="#carousel" id="{{idx}}"></li>
+              </ol>
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                <div *ngFor="let image of team_images; let is_first=first" class="{{is_first ? 'item active' : 'item'}}">
+                  <img src={{image.path}} alt="">
+                  <div *ngIf="image.location.length > 0" class="carousel-caption">
+                    <h4><i class="material-icons">location_on</i> {{image.location}}</h4>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Controls -->
+              <a class="left carousel-control" href="#carousel" data-slide="prev">
+                <i class="material-icons">keyboard_arrow_left</i>
+              </a>
+              <a class="right carousel-control" href="#carousel" data-slide="next">
+                <i class="material-icons">keyboard_arrow_right</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- End Carousel Card -->
+      </div>
+    </div>
+  </div>
+</div>

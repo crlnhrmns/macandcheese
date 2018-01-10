@@ -1,0 +1,64 @@
+<div class="section section-cards cd-section section-dark" id="events">
+  <div class="container">
+
+    <div class="col-md-10 col-md-offset-1 text-center">
+      <h2 class="title">Kalender</h2>
+      <br />
+    </div>
+
+    <!-- Future events -->
+    <div>
+      <h3 class="title col-md-10 col-md-offset-1 text-center" >Hier spelen we binnenkort</h3>
+      <br />
+    </div>
+    <div class="row">
+      <div *ngFor="let event of events">
+        <div class="col-md-3" *ngIf="!dateHasPassed(event.date)">
+          <div class="card card-plain card-blog">
+            <div class="card-image">
+              <a href={{event.link}} target="_blank">
+                <img class="img img-raised" src={{event.img}} />
+              </a>
+            </div>
+            <div class="card-content">
+              <h6 class="{{dateHasPassed(event.date) ? 'category text-danger' : 'category text-success'}}"  class="category text-info">{{event.date | date:format:timezone}}</h6>
+              <h4 class="card-title-dark">
+                <a href={{event.link}} target="_blank">{{event.title}}</a>
+              </h4>
+              <p class="card-description">
+                {{event.description}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Past events -->
+    <div>
+      <h3 class="title col-md-10 col-md-offset-1 text-center" >En hier zijn we al geweest...</h3>
+      <br />
+    </div>
+    <div class="row">
+      <div *ngFor="let event of events">
+        <div class="col-md-3" *ngIf="dateHasPassed(event.date)">
+          <div class="card card-plain card-blog">
+            <div class="card-image">
+              <a href={{event.link}} target="_blank">
+                <img class="img img-raised" src={{event.img}} />
+              </a>
+            </div>
+            <div class="card-content">
+              <h6 class="{{dateHasPassed(event.date) ? 'category text-danger' : 'category text-success'}}"  class="category text-info">{{event.date | date:format:timezone}}</h6>
+              <h4 class="card-title-dark">
+                <a href={{event.link}} target="_blank">{{event.title}}</a>
+              </h4>
+              <p class="card-description">
+                {{event.description}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
